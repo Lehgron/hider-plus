@@ -4,8 +4,6 @@
 	"version": "1.0.0",
 	"minAppVersion": "1.6.0",
 	"description": "Hide UI elements such as tooltips, status, titlebar and more",
-	"author": "@kepano",
-	"authorUrl": "https://www.twitter.com/kepano",
-	"fundingUrl": "https://www.buymeacoffee.com/kepano",
+	"author": "@lehgron",
 	"isDesktopOnly": false
 }
