@@ -1,6 +1,6 @@
-import { App, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { App, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
-export default class Hider extends Plugin {
+export default class HiderPlus extends Plugin {
 	settings: HiderPlusSettings;
 
 	async onload() {
@@ -8,7 +8,7 @@ export default class Hider extends Plugin {
 		await this.loadSettings();
 
 		// add the settings tab
-		this.addSettingTab(new HiderSettingTab(this.app, this));
+		this.addSettingTab(new HiderPlusSettingTab(this.app, this));
 		// add the toggle on/off command
 
 		this.addCommand({
@@ -106,17 +106,15 @@ const DEFAULT_SETTINGS: HiderPlusSettings = {
 	hideVault: false
 }
 
-class HiderSettingTab extends PluginSettingTab {
-
-
-	plugin: Hider;
-	constructor(app: App, plugin: Hider) {
+class HiderPlusSettingTab extends PluginSettingTab {
+	plugin: HiderPlus;
+	constructor(app: App, plugin: HiderPlus) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
 
 	display(): void {
-		let { containerEl } = this;
+		const { containerEl } = this;
 
 		containerEl.empty();
 
