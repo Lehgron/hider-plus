@@ -21,6 +21,15 @@ export default class Hider extends Plugin {
 			}
 		});
 		this.addCommand({
+			id: 'toggle-tab-title-bar',
+			name: 'Toggle tab title bar',
+			callback: () => {
+				this.settings.hideTabTitleBar = !this.settings.hideTabTitleBar;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
 			id: 'toggle-hider-status',
 			name: 'Toggle status bar',
 			callback: () => {
