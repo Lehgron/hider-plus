@@ -13,6 +13,11 @@ body.hider-vault:not(.is-mobile) .workspace-split.mod-left-split .workspace-side
 	padding-left: var(--frame-left-space);
 }
 
+/* Hide tab title bar*/
+.hider-tab-title-bar .view-header {
+	display: none;
+}
+
 /* Hide sidebar buttons */
 .hider-sidebar-buttons .sidebar-toggle-button.mod-right,
 .hider-sidebar-buttons .sidebar-toggle-button.mod-left {

@@ -54,6 +54,7 @@ export default class Hider extends Plugin {
 	updateStyle = () => {
 		document.body.classList.toggle('hider-status', this.settings.hideStatus);
 		document.body.classList.toggle('hider-tabs', this.settings.hideTabs);
+		document.body.classList.toggle('hider-tab-title-bar', this.settings.hideTabTitleBar);
 		document.body.classList.toggle('hider-scroll', this.settings.hideScroll);
 		document.body.classList.toggle('hider-sidebar-buttons', this.settings.hideSidebarButtons);
 		document.body.classList.toggle('hider-tooltips', this.settings.hideTooltips);
@@ -70,6 +71,7 @@ export default class Hider extends Plugin {
 interface HiderPlusSettings {
 	hideStatus: boolean;
 	hideTabs: boolean;
+	hideTabTitleBar: boolean;
 	hideScroll: boolean;
 	hideSidebarButtons: boolean;
 	hideTooltips: boolean;
@@ -83,6 +85,7 @@ interface HiderPlusSettings {
 const DEFAULT_SETTINGS: HiderPlusSettings = {
 	hideStatus: false,
 	hideTabs: false,
+	hideTabTitleBar: false,
 	hideScroll: false,
 	hideSidebarButtons: false,
 	hideTooltips: false,
@@ -114,6 +117,17 @@ class HiderSettingTab extends PluginSettingTab {
 			.addToggle(toggle => toggle.setValue(this.plugin.settings.hideTabs)
 				.onChange((value) => {
 					this.plugin.settings.hideTabs = value;
+					this.plugin.saveData(this.plugin.settings);
+					this.plugin.refresh();
+				})
+			);
+		
+		new Setting(containerEl)
+			.setName('Hide tab title bar')
+			.setDesc('Hides the bar at the top of the editor. ')
+			.addToggle(toggle => toggle.setValue(this.plugin.settings.hideTabTitleBar)
+				.onChange((value) => {
+					this.plugin.settings.hideTabTitleBar = value;
 					this.plugin.saveData(this.plugin.settings);
 					this.plugin.refresh();
 				})
