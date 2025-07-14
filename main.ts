@@ -64,6 +64,7 @@ export default class HiderPlus extends Plugin {
 		document.body.classList.toggle('hider-status', this.settings.hideStatus);
 		document.body.classList.toggle('hider-tabs', this.settings.hideTabs);
 		document.body.classList.toggle('hider-tab-title-bar', this.settings.hideTabTitleBar);
+		document.body.classList.toggle('hider-inline-title', this.settings.hideInlineTtile);
 		document.body.classList.toggle('hider-scroll', this.settings.hideScroll);
 		document.body.classList.toggle('hider-sidebar-buttons', this.settings.hideSidebarButtons);
 		document.body.classList.toggle('hider-tooltips', this.settings.hideTooltips);
@@ -81,6 +82,7 @@ interface HiderPlusSettings {
 	hideStatus: boolean;
 	hideTabs: boolean;
 	hideTabTitleBar: boolean;
+	hideInlineTtile: boolean;
 	hideScroll: boolean;
 	hideSidebarButtons: boolean;
 	hideTooltips: boolean;
@@ -95,6 +97,7 @@ const DEFAULT_SETTINGS: HiderPlusSettings = {
 	hideStatus: false,
 	hideTabs: false,
 	hideTabTitleBar: false,
+	hideInlineTtile: false,
 	hideScroll: false,
 	hideSidebarButtons: false,
 	hideTooltips: false,
@@ -131,10 +134,21 @@ class HiderPlusSettingTab extends PluginSettingTab {
 		
 		new Setting(containerEl)
 			.setName('Hide tab title bar')
-			.setDesc('Hides the bar at the top of the editor. ')
+			.setDesc('Hides the header at the top of every tab.')
 			.addToggle(toggle => toggle.setValue(this.plugin.settings.hideTabTitleBar)
 				.onChange((value) => {
 					this.plugin.settings.hideTabTitleBar = value;
+					this.plugin.saveData(this.plugin.settings);
+					this.plugin.refresh();
+				})
+			);
+
+		new Setting(containerEl)
+			.setName('Hide inline title')
+			.setDesc('Hides the filname as an editable title inline with the file contents.')
+			.addToggle(toggle => toggle.setValue(this.plugin.settings.hideInlineTtile)
+				.onChange((value) => {
+					this.plugin.settings.hideInlineTtile = value;
 					this.plugin.saveData(this.plugin.settings);
 					this.plugin.refresh();
 				})

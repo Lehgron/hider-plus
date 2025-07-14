@@ -13,8 +13,13 @@ body.hider-vault:not(.is-mobile) .workspace-split.mod-left-split .workspace-side
 	padding-left: var(--frame-left-space);
 }
 
-/* Hide tab title bar*/
+/* Hide tab title bar */
 .hider-tab-title-bar .view-header {
+	display: none;
+}
+
+/* Hide inline title */
+.hider-inline-title .inline-title {
 	display: none;
 }
 
