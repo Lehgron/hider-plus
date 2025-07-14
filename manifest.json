@@ -4,6 +4,5 @@
 	"version": "1.0.0",
 	"minAppVersion": "1.6.0",
 	"description": "Hide UI elements such as tooltips, status, titlebar and more",
-	"author": "@lehgron",
 	"isDesktopOnly": false
 }
