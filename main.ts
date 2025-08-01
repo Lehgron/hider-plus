@@ -30,10 +30,109 @@ export default class HiderPlus extends Plugin {
 			}
 		});
 		this.addCommand({
+			id: 'toggle-inline-title',
+			name: 'Toggle inline title',
+			callback: () => {
+				this.settings.hideInlineTtile = !this.settings.hideInlineTtile;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
 			id: 'toggle-hider-status',
 			name: 'Toggle status bar',
 			callback: () => {
 				this.settings.hideStatus = !this.settings.hideStatus;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'toggle-hider-vault-name',
+			name: 'Toggle vault name. Warning: hides access to settings and vault switcher.',
+			callback: () => {
+				this.settings.hideVault = !this.settings.hideVault;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'toggle-hider-scroll-bars',
+			name: 'Toggle scroll bars',
+			callback: () => {
+				this.settings.hideScroll = !this.settings.hideScroll;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'toggle-sidebar-toggle-buttons',
+			name: 'Toggle both sidebar buttons',
+			callback: () => {
+				this.settings.hideSidebarButtons = !this.settings.hideSidebarButtons;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'toggle-ribbon',
+			name: 'Toggle ribbon',
+			callback: () => {
+				this.settings.hideSidebarRibbon = !this.settings.hideSidebarRibbon;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'toggle-tooltips',
+			name: 'Toggle tooltips',
+			callback: () => {
+				this.settings.hideTooltips = !this.settings.hideTooltips;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'toggle-file-explorer-buttons',
+			name: 'Toggle file explorer buttons',
+			callback: () => {
+				this.settings.hideFileNavButtons = !this.settings.hideFileNavButtons;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'toggle-instructions',
+			name: 'Toggle instructions',
+			callback: () => {
+				this.settings.hideInstructions = !this.settings.hideInstructions;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'toggle-search-suggestions',
+			name: 'Toggle search suggestions',
+			callback: () => {
+				this.settings.hideSearchSuggestions = !this.settings.hideSearchSuggestions;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'toggle-count-search-matches',
+			name: 'Toggle count of search term matches',
+			callback: () => {
+				this.settings.hideSearchCounts = !this.settings.hideSearchCounts;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'toggle-properties in Reading view',
+			name: 'Toggle properties in reading view',
+			callback: () => {
+				this.settings.hideSearchCounts = !this.settings.hideSearchCounts;
 				this.saveData(this.settings);
 				this.refresh();
 			}
@@ -67,6 +166,7 @@ export default class HiderPlus extends Plugin {
 		document.body.classList.toggle('hider-inline-title', this.settings.hideInlineTtile);
 		document.body.classList.toggle('hider-scroll', this.settings.hideScroll);
 		document.body.classList.toggle('hider-sidebar-buttons', this.settings.hideSidebarButtons);
+		document.body.classList.toggle('hider-sidebar-ribbon', this.settings.hideSidebarRibbon);
 		document.body.classList.toggle('hider-tooltips', this.settings.hideTooltips);
 		document.body.classList.toggle('hider-search-suggestions', this.settings.hideSearchSuggestions);
 		document.body.classList.toggle('hider-file-nav-header', this.settings.hideFileNavButtons);
@@ -85,6 +185,7 @@ interface HiderPlusSettings {
 	hideInlineTtile: boolean;
 	hideScroll: boolean;
 	hideSidebarButtons: boolean;
+	hideSidebarRibbon: boolean;
 	hideTooltips: boolean;
 	hideFileNavButtons: boolean;
 	hideSearchSuggestions: boolean;
@@ -100,6 +201,7 @@ const DEFAULT_SETTINGS: HiderPlusSettings = {
 	hideInlineTtile: false,
 	hideScroll: false,
 	hideSidebarButtons: false,
+	hideSidebarRibbon: false,
 	hideTooltips: false,
 	hideFileNavButtons: false,
 	hideSearchSuggestions: false,
@@ -193,6 +295,17 @@ class HiderPlusSettingTab extends PluginSettingTab {
 			.addToggle(toggle => toggle.setValue(this.plugin.settings.hideSidebarButtons)
 				.onChange((value) => {
 					this.plugin.settings.hideSidebarButtons = value;
+					this.plugin.saveData(this.plugin.settings);
+					this.plugin.refresh();
+				})
+			);
+		
+		new Setting(containerEl)
+			.setName('Hide ribbon')
+			.setDesc('Hides vertical toolbar at the side of the window')
+			.addToggle(toggle => toggle.setValue(this.plugin.settings.hideSidebarRibbon)
+				.onChange((value) => {
+					this.plugin.settings.hideSidebarRibbon = value;
 					this.plugin.saveData(this.plugin.settings);
 					this.plugin.refresh();
 				})
