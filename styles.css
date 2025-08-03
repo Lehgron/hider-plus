@@ -13,16 +13,6 @@ body.hider-vault:not(.is-mobile) .workspace-split.mod-left-split .workspace-side
 	padding-left: var(--frame-left-space);
 }
 
-/* Hide tab title bar */
-.hider-tab-title-bar .view-header {
-	display: none;
-}
-
-/* Hide inline title */
-.hider-inline-title .inline-title {
-	display: none;
-}
-
 /* Hide sidebar buttons */
 .hider-sidebar-buttons .sidebar-toggle-button.mod-right,
 .hider-sidebar-buttons .sidebar-toggle-button.mod-left {
@@ -34,52 +24,6 @@ body.hider-vault:not(.is-mobile) .workspace-split.mod-left-split .workspace-side
 .hider-sidebar-buttons.mod-macos {
 	--frame-left-space: 60px;
 }
-
-/* Hide sidebar ribbon */
-.hider-sidebar-ribbon .side-dock-ribbon.mod-right,
-.hider-sidebar-ribbon .side-dock-ribbon.mod-left {
-	display: none;
-}
-.hider-sidebar-ribbon.is-hidden-frameless:not(.is-fullscreen) .workspace-tabs.mod-top-left-space .workspace-tab-header-container  {
-  padding-left: calc(var(--size-4-2) + var(--frame-left-space) + 35px);
-}
-
-/*
-.hider-sidebar-ribbon.mod-macos.is-hidden-frameless:not(.is-fullscreen):not(.is-popout-window) .workspace-tabs.mod-top-left-space .workspace-tab-header-container {
-  padding-left: calc(var(--frame-left-space) + var(--ribbon-width));
-}
-.hider-sidebar-ribbon .workspace-ribbon.mod-left {
-	display: none;
-}
-*/
-
-/*
-body:is(.hider-sidebar-ribbon) {
-	--ribbon-width: 0px;
-}
-body:is(.hider-sidebar-ribbon) .workspace-ribbon {
-	display: none;
-}
-body:not(.hider-sidebar-ribbon) .workspace-ribbon {
-	display: flex;
-}
-body:not(.hider-sidebar-ribbon) {
-	--ribbon-width: 44px;
-}
-*/
-
-/*
-.hider-sidebar-ribbon .workspace-ribbon.mod-right {
-  visibility:hidden;
-  position:absolute;
-}
-.hider-sidebar-ribbon .workspace-split.mod-right-split {
-  margin-right:0;
-}
-.hider-sidebar-ribbon .workspace-split.mod-left-split {
-  margin-left:0;
-}
-*/
 
 /* Hide meta */
 .hider-meta .markdown-reading-view .metadata-container {

@@ -24,18 +24,14 @@ export default class HiderPlus extends Plugin {
 			id: 'toggle-tab-title-bar',
 			name: 'Toggle tab title bar',
 			callback: () => {
-				this.settings.hideTabTitleBar = !this.settings.hideTabTitleBar;
-				this.saveData(this.settings);
-				this.refresh();
+				this.app.vault.setConfig("showViewHeader", !this.app.vault.getConfig("showViewHeader"));
 			}
 		});
 		this.addCommand({
 			id: 'toggle-inline-title',
 			name: 'Toggle inline title',
 			callback: () => {
-				this.settings.hideInlineTtile = !this.settings.hideInlineTtile;
-				this.saveData(this.settings);
-				this.refresh();
+				this.app.vault.setConfig("showInlineTitle", !this.app.vault.getConfig("showInlineTitle"));
 			}
 		});
 		this.addCommand({
@@ -78,9 +74,8 @@ export default class HiderPlus extends Plugin {
 			id: 'toggle-ribbon',
 			name: 'Toggle ribbon',
 			callback: () => {
-				this.settings.hideSidebarRibbon = !this.settings.hideSidebarRibbon;
+				this.app.commands.executeCommandById("app:toggle-ribbon");
 				this.saveData(this.settings);
-				this.refresh();
 			}
 		});
 		this.addCommand({
@@ -141,7 +136,7 @@ export default class HiderPlus extends Plugin {
 	}
 
 	onunload() {
-		console.log('Unloading Hider plugin');
+		console.log('Unloading Hider Plus plugin');
 	}
 
 	async loadSettings() {
@@ -162,11 +157,8 @@ export default class HiderPlus extends Plugin {
 	updateStyle = () => {
 		document.body.classList.toggle('hider-status', this.settings.hideStatus);
 		document.body.classList.toggle('hider-tabs', this.settings.hideTabs);
-		document.body.classList.toggle('hider-tab-title-bar', this.settings.hideTabTitleBar);
-		document.body.classList.toggle('hider-inline-title', this.settings.hideInlineTtile);
 		document.body.classList.toggle('hider-scroll', this.settings.hideScroll);
 		document.body.classList.toggle('hider-sidebar-buttons', this.settings.hideSidebarButtons);
-		document.body.classList.toggle('hider-sidebar-ribbon', this.settings.hideSidebarRibbon);
 		document.body.classList.toggle('hider-tooltips', this.settings.hideTooltips);
 		document.body.classList.toggle('hider-search-suggestions', this.settings.hideSearchSuggestions);
 		document.body.classList.toggle('hider-file-nav-header', this.settings.hideFileNavButtons);
@@ -181,11 +173,8 @@ export default class HiderPlus extends Plugin {
 interface HiderPlusSettings {
 	hideStatus: boolean;
 	hideTabs: boolean;
-	hideTabTitleBar: boolean;
-	hideInlineTtile: boolean;
 	hideScroll: boolean;
 	hideSidebarButtons: boolean;
-	hideSidebarRibbon: boolean;
 	hideTooltips: boolean;
 	hideFileNavButtons: boolean;
 	hideSearchSuggestions: boolean;
@@ -197,11 +186,8 @@ interface HiderPlusSettings {
 const DEFAULT_SETTINGS: HiderPlusSettings = {
 	hideStatus: false,
 	hideTabs: false,
-	hideTabTitleBar: false,
-	hideInlineTtile: false,
 	hideScroll: false,
 	hideSidebarButtons: false,
-	hideSidebarRibbon: false,
 	hideTooltips: false,
 	hideFileNavButtons: false,
 	hideSearchSuggestions: false,
@@ -237,22 +223,18 @@ class HiderPlusSettingTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName('Hide tab title bar')
 			.setDesc('Hides the header at the top of every tab.')
-			.addToggle(toggle => toggle.setValue(this.plugin.settings.hideTabTitleBar)
+			.addToggle(toggle => toggle.setValue(!this.app.vault.getConfig("showViewHeader"))
 				.onChange((value) => {
-					this.plugin.settings.hideTabTitleBar = value;
-					this.plugin.saveData(this.plugin.settings);
-					this.plugin.refresh();
+					this.app.vault.setConfig("showViewHeader", !this.app.vault.getConfig("showViewHeader"));
 				})
 			);
 
 		new Setting(containerEl)
 			.setName('Hide inline title')
 			.setDesc('Hides the filname as an editable title inline with the file contents.')
-			.addToggle(toggle => toggle.setValue(this.plugin.settings.hideInlineTtile)
+			.addToggle(toggle => toggle.setValue(this.app.vault.getConfig("showInlineTitle"))
 				.onChange((value) => {
-					this.plugin.settings.hideInlineTtile = value;
-					this.plugin.saveData(this.plugin.settings);
-					this.plugin.refresh();
+					this.app.vault.setConfig("showInlineTitle", !this.app.vault.getConfig("showInlineTitle"));
 				})
 			);
 
@@ -303,11 +285,9 @@ class HiderPlusSettingTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName('Hide ribbon')
 			.setDesc('Hides vertical toolbar at the side of the window')
-			.addToggle(toggle => toggle.setValue(this.plugin.settings.hideSidebarRibbon)
+			.addToggle(toggle => toggle.setValue(!this.app.vault.getConfig("showRibbon"))
 				.onChange((value) => {
-					this.plugin.settings.hideSidebarRibbon = value;
-					this.plugin.saveData(this.plugin.settings);
-					this.plugin.refresh();
+					this.app.commands.executeCommandById("app:toggle-ribbon");
 				})
 			);
 
