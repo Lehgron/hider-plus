@@ -21,10 +21,42 @@ export default class HiderPlus extends Plugin {
 			}
 		});
 		this.addCommand({
+			id: 'show-tab-containers',
+			name: 'Show tab bar',
+			callback: () => {
+				this.settings.hideTabs = false;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'hide-tab-containers',
+			name: 'Hide tab bar',
+			callback: () => {
+				this.settings.hideTabs = true;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
 			id: 'toggle-tab-title-bar',
 			name: 'Toggle tab title bar',
 			callback: () => {
 				this.app.vault.setConfig("showViewHeader", !this.app.vault.getConfig("showViewHeader"));
+			}
+		});
+		this.addCommand({
+			id: 'show-tab-title-bar',
+			name: 'Show tab title bar',
+			callback: () => {
+				this.app.vault.setConfig("showViewHeader", true);
+			}
+		});
+		this.addCommand({
+			id: 'hide-tab-title-bar',
+			name: 'Hide tab title bar',
+			callback: () => {
+				this.app.vault.setConfig("showViewHeader", false);
 			}
 		});
 		this.addCommand({
@@ -35,10 +67,42 @@ export default class HiderPlus extends Plugin {
 			}
 		});
 		this.addCommand({
+			id: 'show-inline-title',
+			name: 'Show inline title',
+			callback: () => {
+				this.app.vault.setConfig("showInlineTitle", true);
+			}
+		});
+		this.addCommand({
+			id: 'hide-inline-title',
+			name: 'Hide inline title',
+			callback: () => {
+				this.app.vault.setConfig("showInlineTitle", false);
+			}
+		});
+		this.addCommand({
 			id: 'toggle-hider-status',
 			name: 'Toggle status bar',
 			callback: () => {
 				this.settings.hideStatus = !this.settings.hideStatus;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'show-hider-status',
+			name: 'Show status bar',
+			callback: () => {
+				this.settings.hideStatus = false;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'hide-hider-status',
+			name: 'Hide status bar',
+			callback: () => {
+				this.settings.hideStatus = true;
 				this.saveData(this.settings);
 				this.refresh();
 			}
@@ -53,10 +117,46 @@ export default class HiderPlus extends Plugin {
 			}
 		});
 		this.addCommand({
+			id: 'show-hider-vault-name',
+			name: 'Show vault name. Warning: hides access to settings and vault switcher.',
+			callback: () => {
+				this.settings.hideVault = false;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'hide-hider-vault-name',
+			name: 'Hide vault name. Warning: hides access to settings and vault switcher.',
+			callback: () => {
+				this.settings.hideVault = true;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
 			id: 'toggle-hider-scroll-bars',
 			name: 'Toggle scroll bars',
 			callback: () => {
 				this.settings.hideScroll = !this.settings.hideScroll;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'show-hider-scroll-bars',
+			name: 'Show scroll bars',
+			callback: () => {
+				this.settings.hideScroll = false;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'hide-hider-scroll-bars',
+			name: 'Hide scroll bars',
+			callback: () => {
+				this.settings.hideScroll = true;
 				this.saveData(this.settings);
 				this.refresh();
 			}
@@ -71,11 +171,42 @@ export default class HiderPlus extends Plugin {
 			}
 		});
 		this.addCommand({
+			id: 'show-sidebar-toggle-buttons',
+			name: 'Show both sidebar buttons',
+			callback: () => {
+				this.settings.hideSidebarButtons = false;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'hide-sidebar-toggle-buttons',
+			name: 'Hide both sidebar buttons',
+			callback: () => {
+				this.settings.hideSidebarButtons = true;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
 			id: 'toggle-ribbon',
 			name: 'Toggle ribbon',
 			callback: () => {
 				this.app.commands.executeCommandById("app:toggle-ribbon");
-				this.saveData(this.settings);
+			}
+		});
+		this.addCommand({
+			id: 'show-ribbon',
+			name: 'Show ribbon',
+			callback: () => {
+				this.app.vault.setConfig("showRibbon", true);
+			}
+		});
+		this.addCommand({
+			id: 'hide-ribbon',
+			name: 'Hide  ribbon',
+			callback: () => {
+				this.app.vault.setConfig("showRibbon", false);
 			}
 		});
 		this.addCommand({
@@ -83,6 +214,24 @@ export default class HiderPlus extends Plugin {
 			name: 'Toggle tooltips',
 			callback: () => {
 				this.settings.hideTooltips = !this.settings.hideTooltips;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'show-tooltips',
+			name: 'Show tooltips',
+			callback: () => {
+				this.settings.hideTooltips = false;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'hide-tooltips',
+			name: 'Hide tooltips',
+			callback: () => {
+				this.settings.hideTooltips = true;
 				this.saveData(this.settings);
 				this.refresh();
 			}
@@ -97,10 +246,46 @@ export default class HiderPlus extends Plugin {
 			}
 		});
 		this.addCommand({
+			id: 'show-file-explorer-buttons',
+			name: 'Show file explorer buttons',
+			callback: () => {
+				this.settings.hideFileNavButtons = false;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'hide-file-explorer-buttons',
+			name: 'Hide file explorer buttons',
+			callback: () => {
+				this.settings.hideFileNavButtons = true;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
 			id: 'toggle-instructions',
 			name: 'Toggle instructions',
 			callback: () => {
 				this.settings.hideInstructions = !this.settings.hideInstructions;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'show-instructions',
+			name: 'Show instructions',
+			callback: () => {
+				this.settings.hideInstructions = false;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'hide-instructions',
+			name: 'Hide instructions',
+			callback: () => {
+				this.settings.hideInstructions = true;
 				this.saveData(this.settings);
 				this.refresh();
 			}
@@ -115,6 +300,24 @@ export default class HiderPlus extends Plugin {
 			}
 		});
 		this.addCommand({
+			id: 'show-search-suggestions',
+			name: 'Show search suggestions',
+			callback: () => {
+				this.settings.hideSearchSuggestions = false;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'hide-search-suggestions',
+			name: 'Hide search suggestions',
+			callback: () => {
+				this.settings.hideSearchSuggestions = true;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
 			id: 'toggle-count-search-matches',
 			name: 'Toggle count of search term matches',
 			callback: () => {
@@ -124,10 +327,46 @@ export default class HiderPlus extends Plugin {
 			}
 		});
 		this.addCommand({
+			id: 'show-count-search-matches',
+			name: 'Show count of search term matches',
+			callback: () => {
+				this.settings.hideSearchCounts = false;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'hide-count-search-matches',
+			name: 'Hide count of search term matches',
+			callback: () => {
+				this.settings.hideSearchCounts = true;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
 			id: 'toggle-properties in Reading view',
 			name: 'Toggle properties in reading view',
 			callback: () => {
-				this.settings.hideSearchCounts = !this.settings.hideSearchCounts;
+				this.settings.hidePropertiesReading = !this.settings.hidePropertiesReading;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'show-properties in Reading view',
+			name: 'Show properties in reading view',
+			callback: () => {
+				this.settings.hidePropertiesReading= false;
+				this.saveData(this.settings);
+				this.refresh();
+			}
+		});
+		this.addCommand({
+			id: 'hide-properties in Reading view',
+			name: 'Hide properties in reading view',
+			callback: () => {
+				this.settings.hidePropertiesReading= true;
 				this.saveData(this.settings);
 				this.refresh();
 			}

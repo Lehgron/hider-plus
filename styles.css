@@ -25,7 +25,7 @@ body.hider-vault:not(.is-mobile) .workspace-split.mod-left-split .workspace-side
 	--frame-left-space: 60px;
 }
 
-/* Hide meta */
+/* Hide meta (properties)*/
 .hider-meta .markdown-reading-view .metadata-container {
 	display:none;
 }
