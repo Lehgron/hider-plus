@@ -1,35 +1,45 @@
-Support the development of my plugins and themes **@kepano** on [Twitter](https://www.twitter.com/kepano) or [Buy me a coffee](https://www.buymeacoffee.com/kepano).
+Fork of the [hider](https://github.com/kepano/obsidian-hider) plugin. 
 
-<a href="https://www.buymeacoffee.com/kepano"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=kepano&button_colour=6a8695&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00"></a>
+This plugin expands on the hider plugin build by kepano in 2 ways.
+1. Adding the control for the ribbon, inline title and tab title bar to the plugin settings. Now all Ui elements can be hidden or shown through one settings page.
+2. Adding commands for toggling, showing and hiding of all UI elements.
+
+The commands for hiding and showing the UI elements are intended for use with other plugins, like QuickAdd. This way you could create different views customized to your liking, between which you could quickly switch.
 
 ## Overview
 
-This plugin enables you to hide certain parts of the Obsidian UI. Note that your CSS theme may override Hider.
+Note that your CSS theme may override Hider.
 
-- Hide app ribbon (can be bound to a hotkey)
-- Hide tab bar (can be bound to a hotkey)
-- Hide status bar (can be bound to a hotkey)
-- Hide vault name
-- Hide scrollbars
-- Hide search suggestions
-- Hide count of search term matches
-- Hide tooltips
-- Hide instructions in prompts
-- Hide metadata in Reading view
+- tab bar 
+- tab title bar
+- inline title
+- status bar 
+- vault name
+- scrollbars
+- sidebar toggle buttons
+- ribbon 
+- tooltips
+- file explorer buttons
+- instructions in prompts
+- search suggestions
+- count of search term matches
+- metadata in Reading view
 
-## Making your theme compatible with Hider
+## Making your theme compatible with Hider Plus
 
 Hider injects the following classes on the `body` element when features are toggled on.
+For the tab title bar, inline title and ribbon it uses the app internal settings. These shouldn't interfere with what you are doing.
 
 | Toggle | Class |
 | ------ | ----- |
-| App ribbon | `.hider-ribbon` |
-| Status bar | `.hider-status` |
 | Tab bar | `.hider-tabs` |
+| Status bar | `.hider-status` |
 | Vault name | `.hider-vault` |
 | Scrollbars | `.hider-scroll` |
+| Sidebar toggle buttons| `hider-sidebar-buttons` |
+| Tooltips | `.hider-tooltips` |
+| File explorer buttons | `.hider-file-nav-header` |
+| Instructions | `.hider-instructions` |
 | Search suggestions | `.hider-search-suggestions` |
 | Search term counts | `.hider-search-counts` |
-| Tooltips | `.hider-tooltips` |
-| Instructions | `.hider-instructions` |
 | Metadata | `.hider-meta` |
