@@ -1,7 +1,7 @@
 Fork of the [hider](https://github.com/kepano/obsidian-hider) plugin. 
 
 This plugin expands on the hider plugin build by kepano in 2 ways.
-1. Adding the control for the ribbon, inline title and tab title bar to the plugin settings. Now all Ui elements can be hidden or shown through one settings page.
+1. Adding the control for the ribbon, inline title and tab title bar to the plugin settings. Now all UI elements can be hidden or shown through one settings page.
 2. Adding commands for toggling, showing and hiding of all UI elements.
 
 The commands for hiding and showing the UI elements are intended for use with other plugins, like QuickAdd. This way you could create different views customized to your liking, between which you could quickly switch.
