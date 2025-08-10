@@ -121,5 +121,21 @@ export function addToggleCommands(plugin: HiderPlus) {
 			plugin.refresh();
 		}
 	});
-	plugin.refresh()
+}
+
+export function removeToggleCommands(plugin: HiderPlus) {
+	plugin.removeCommand('toggle-tab-containers');
+	plugin.removeCommand('toggle-tab-title-bar');
+	plugin.removeCommand('toggle-inline-title');
+	plugin.removeCommand('toggle-hider-status');
+	plugin.removeCommand('toggle-hider-vault-name');
+	plugin.removeCommand('toggle-hider-scroll-bars');
+	plugin.removeCommand('toggle-sidebar-toggle-buttons');
+	plugin.removeCommand('toggle-ribbon');
+	plugin.removeCommand('toggle-tooltips');
+	plugin.removeCommand('toggle-file-explorer-buttons');
+	plugin.removeCommand('toggle-instructions');
+	plugin.removeCommand('toggle-search-suggestions');
+	plugin.removeCommand('toggle-count-search-matches');
+	plugin.removeCommand('toggle-properties in Reading view');
 }
