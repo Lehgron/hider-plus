@@ -1,6 +1,6 @@
 import { App, Plugin, PluginSettingTab, Setting } from 'obsidian';
 import { addToggleCommands } from 'togglecommands';
-import { addShowCommands } from 'showcommands';
+import { addShowCommands, removeShowCommands } from 'showcommands';
 import { addHideCommands, removeHideCommands } from 'hidecommands';
 
 export default class HiderPlus extends Plugin {
@@ -14,9 +14,9 @@ export default class HiderPlus extends Plugin {
 		this.addSettingTab(new HiderPlusSettingTab(this.app, this));
 
 		// add the commands
+		if (!this.settings.hideshowcommands) {addShowCommands(this);}
+		if (!this.settings.hidehidecommands) {addHideCommands(this);}
 		addToggleCommands(this);
-		addShowCommands(this);
-		addHideCommands(this);
 	}
 
 	onunload() {
@@ -109,7 +109,7 @@ class HiderPlusSettingTab extends PluginSettingTab {
 					this.plugin.refresh();
 				})
 			);
-		
+
 		new Setting(containerEl)
 			.setName('Hide tab title bar')
 			.setDesc('Hides the header at the top of every tab.')
@@ -171,7 +171,7 @@ class HiderPlusSettingTab extends PluginSettingTab {
 					this.plugin.refresh();
 				})
 			);
-		
+
 		new Setting(containerEl)
 			.setName('Hide ribbon')
 			.setDesc('Hides vertical toolbar at the side of the window')
@@ -248,7 +248,7 @@ class HiderPlusSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName('')
+			.setName('Toggle for Hide, Show and Toggle Commands')
 			.setHeading();
 
 		new Setting(containerEl)
@@ -257,12 +257,26 @@ class HiderPlusSettingTab extends PluginSettingTab {
 				.onChange((value) => {
 					this.plugin.settings.hidehidecommands = value;
 					if (value) {
-					removeHideCommands(this.plugin);
+						removeHideCommands(this.plugin);
 					} else {
 						addHideCommands(this.plugin);
 					}
 					this.plugin.saveData(this.plugin.settings);
 				})
-			)
+			);
+
+		new Setting(containerEl)
+			.setName('Hide Show Commands')
+			.addToggle(toggle => toggle.setValue(this.plugin.settings.hideshowcommands)
+				.onChange((value) => {
+					this.plugin.settings.hideshowcommands = value;
+					if (value) {
+						removeShowCommands(this.plugin);
+					} else {
+						addShowCommands(this.plugin);
+					}
+					this.plugin.saveData(this.plugin.settings)
+				})
+			);
 	}
 }
