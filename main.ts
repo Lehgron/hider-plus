@@ -1,7 +1,7 @@
 import { App, Plugin, PluginSettingTab, Setting } from 'obsidian';
 import { addToggleCommands } from 'togglecommands';
 import { addShowCommands } from 'showcommands';
-import { addHideCommands } from 'hidecommands';
+import { addHideCommands, removeHideCommands } from 'hidecommands';
 
 export default class HiderPlus extends Plugin {
 	settings: HiderPlusSettings;
@@ -66,6 +66,9 @@ interface HiderPlusSettings {
 	hideInstructions: boolean;
 	hidePropertiesReading: boolean;
 	hideVault: boolean;
+	hidetogglecommands: boolean;
+	hidehidecommands: boolean;
+	hideshowcommands: boolean;
 }
 const DEFAULT_SETTINGS: HiderPlusSettings = {
 	hideStatus: false,
@@ -78,7 +81,10 @@ const DEFAULT_SETTINGS: HiderPlusSettings = {
 	hideSearchCounts: false,
 	hideInstructions: false,
 	hidePropertiesReading: false,
-	hideVault: false
+	hideVault: false,
+	hidetogglecommands: false,
+	hidehidecommands: false,
+	hideshowcommands: false,
 }
 
 class HiderPlusSettingTab extends PluginSettingTab {
@@ -241,5 +247,22 @@ class HiderPlusSettingTab extends PluginSettingTab {
 				})
 			);
 
+		new Setting(containerEl)
+			.setName('')
+			.setHeading();
+
+		new Setting(containerEl)
+			.setName('Hide Hide Commands')
+			.addToggle(toggle => toggle.setValue(this.plugin.settings.hidehidecommands)
+				.onChange((value) => {
+					this.plugin.settings.hidehidecommands = value;
+					if (value) {
+					removeHideCommands(this.plugin);
+					} else {
+						addHideCommands(this.plugin);
+					}
+					this.plugin.saveData(this.plugin.settings);
+				})
+			)
 	}
 }

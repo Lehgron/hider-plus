@@ -122,3 +122,20 @@ export function addHideCommands(plugin: HiderPlus) {
 		}
 	});
 }
+
+export function removeHideCommands(plugin: HiderPlus) {
+	plugin.removeCommand('hide-tab-containers');
+	plugin.removeCommand('hide-tab-title-bar');
+	plugin.removeCommand('hide-inline-title');
+	plugin.removeCommand('hide-hider-status');
+	plugin.removeCommand('hide-hider-vault-name');
+	plugin.removeCommand('hide-hider-scroll-bars');
+	plugin.removeCommand('hide-sidebar-toggle-buttons');
+	plugin.removeCommand('hide-ribbon');
+	plugin.removeCommand('hide-tooltips');
+	plugin.removeCommand('hide-file-explorer-buttons');
+	plugin.removeCommand('hide-instructions');
+	plugin.removeCommand('hide-search-suggestions');
+	plugin.removeCommand('hide-count-search-matches');
+	plugin.removeCommand('hide-properties in Reading view');
+}
