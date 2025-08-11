@@ -5,6 +5,7 @@ This plugin expands on the hider plugin build by kepano in 2 ways.
 2. Adding commands for toggling, showing and hiding of all UI elements.
 
 The commands for hiding and showing the UI elements are intended for use with other plugins, like QuickAdd. This way you could create different views customized to your liking, between which you could quickly switch.
+The commands are by necessity very similar in their naming. If you for example only use the toggle commands you can hide the hide and show commands in the settings (currently you can only hide the commands in bulk).
 
 ## Overview
 
