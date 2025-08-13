@@ -1,9 +1,9 @@
 import { Plugin } from 'obsidian';
-import HiderPlusSettingTab from 'settingstab';
-import { addToggleCommands } from 'togglecommands';
-import { addShowCommands } from 'showcommands';
-import { addHideCommands } from 'hidecommands';
-import { HiderPlusSettings, DEFAULT_SETTINGS } from 'settings';
+import HiderPlusSettingTab from './settingstab';
+import { addToggleCommands } from './togglecommands';
+import { addShowCommands } from './showcommands';
+import { addHideCommands } from './hidecommands';
+import { HiderPlusSettings, DEFAULT_SETTINGS } from './settings';
 
 export default class HiderPlus extends Plugin {
 	settings: HiderPlusSettings;

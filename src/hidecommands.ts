@@ -1,4 +1,4 @@
-import HiderPlus from "main";
+import HiderPlus from "./main";
 
 export function addHideCommands(plugin: HiderPlus) {
 	plugin.addCommand({

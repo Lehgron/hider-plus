@@ -1,8 +1,8 @@
 import { App, PluginSettingTab, Setting } from "obsidian";
 import HiderPlus from "./main";
-import { addToggleCommands, removeToggleCommands } from 'togglecommands';
-import { addShowCommands, removeShowCommands } from 'showcommands';
-import { addHideCommands, removeHideCommands } from 'hidecommands';
+import { addToggleCommands, removeToggleCommands } from './togglecommands';
+import { addShowCommands, removeShowCommands } from './showcommands';
+import { addHideCommands, removeHideCommands } from './hidecommands';
 
 export default class HiderPlusSettingTab extends PluginSettingTab {
 	plugin: HiderPlus;
