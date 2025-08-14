@@ -39,7 +39,7 @@ export default class HiderPlusSettingTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName('Hide inline title')
 			.setDesc('Hides the filname as an editable title inline with the file contents.')
-			.addToggle(toggle => toggle.setValue(this.app.vault.getConfig("showInlineTitle"))
+			.addToggle(toggle => toggle.setValue(!this.app.vault.getConfig("showInlineTitle"))
 				.onChange((value) => {
 					this.app.vault.setConfig("showInlineTitle", !this.app.vault.getConfig("showInlineTitle"));
 				})
