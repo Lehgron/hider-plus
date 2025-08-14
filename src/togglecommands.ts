@@ -64,7 +64,7 @@ export function addToggleCommands(plugin: HiderPlus) {
 		id: 'toggle-ribbon',
 		name: 'Toggle ribbon',
 		callback: () => {
-			plugin.app.commands.executeCommandById("app:toggle-ribbon");
+			plugin.app.vault.setConfig("showRibbon", !plugin.app.vault.getConfig("showRibbon"));
 		}
 	});
 	plugin.addCommand({

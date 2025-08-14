@@ -94,7 +94,7 @@ export default class HiderPlusSettingTab extends PluginSettingTab {
 			.setDesc('Hides vertical toolbar at the side of the window')
 			.addToggle(toggle => toggle.setValue(!this.app.vault.getConfig("showRibbon"))
 				.onChange((value) => {
-					this.app.commands.executeCommandById("app:toggle-ribbon");
+					this.app.vault.setConfig("showRibbon", !this.app.vault.getConfig("showRibbon"));
 				})
 			);
 
