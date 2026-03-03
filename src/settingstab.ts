@@ -3,12 +3,18 @@ import HiderPlus from "./main";
 import { addToggleCommands, removeToggleCommands } from './togglecommands';
 import { addShowCommands, removeShowCommands } from './showcommands';
 import { addHideCommands, removeHideCommands } from './hidecommands';
+import { presetUIState } from "./settings";
 
 export default class HiderPlusSettingTab extends PluginSettingTab {
 	plugin: HiderPlus;
+	presetUIState: presetUIState;
+	
 	constructor(app: App, plugin: HiderPlus) {
 		super(app, plugin);
 		this.plugin = plugin;
+		this.presetUIState = {
+			toggleCommandsSectionCollapsed: true,
+		};
 	}
 
 	display(): void {
@@ -227,5 +233,11 @@ export default class HiderPlusSettingTab extends PluginSettingTab {
 					})
 				);
 			})
+			this.renderHideToggleCommands(containerEl);
+	}
+
+	renderHideToggleCommands(containerEL: HTMLElement): void{
+		const toggleCommandsSection = this.containerEl.createDiv("toggle-commands-settings-section");
+		toggleCommandsSection.addClass("");
 	}
 }

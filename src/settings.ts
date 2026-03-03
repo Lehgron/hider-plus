@@ -32,3 +32,7 @@ export const DEFAULT_SETTINGS: HiderPlusSettings = {
 	hidehidecommands: false,
 	hideshowcommands: false,
 }
+
+export interface presetUIState {
+	toggleCommandsSectionCollapsed: boolean;
+}
